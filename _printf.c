@@ -22,13 +22,13 @@ _printf(const char *format, ...)
 			switch (op)
 			{
 				case 'c':
-					putchar(va_arg(args, int));
+					_putchar(va_arg(args, int));
 					break;
 				case 's':
 					str = va_arg(args, char*);
 					while(str[y] != '\0')
 					{
-						putchar(str[y]);
+						_putchar(str[y]);
 						y++;
 					}
 					break;
@@ -36,7 +36,7 @@ _printf(const char *format, ...)
 		}
 		else if (format[i] != op)
 		{
-			putchar(format[i]);
+			_putchar(format[i]);
 		}
 		i++;
 	}
