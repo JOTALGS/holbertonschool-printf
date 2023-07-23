@@ -100,7 +100,6 @@ _printf(const char *format, ...)
 				break;
 			case '\0':
 				return (-1);
-				break;
 			default:
 				_putchar(format[i]);
 				len++;
