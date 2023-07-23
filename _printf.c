@@ -40,58 +40,65 @@ _printf(const char *format, ...)
 {
 	va_list args;
 	size_t i = 0;
-	int y = 0;
-	char op;
+	int y;
 	char *str;
 	int dgt;
 	int len = 0;
 
 	if (!format)
+	{
+		_putchar('\n');
 		return (0);
-
+	}
 	va_start(args, format);
-	while(format[i])
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
-			op = format[i + 1];
-			switch (op)
+			switch (format[i + 1])
 			{
 				case 'c':
 					_putchar(va_arg(args, int));
 					len++;
+					i++;
 					break;
 				case 's':
-					str = va_arg(args, char*);
-					while(str[y] != '\0')
+					str = va_arg(args, char *);
+					for (y = 0; str[y] != '\0'; y++)
 					{
 						_putchar(str[y]);
 						len++;
-						y++;
 					}
+					i++;
 					break;
 				case 'd':
 					dgt = va_arg(args, int);
 					len += prt_int(dgt);
+					i++;
 					break;
 				case 'i':
 					dgt = va_arg(args, int);
 					len += prt_int(dgt);
+					i++;
+					break;
+				case '%':
+					_putchar(format[i + 1]);
+					len++;
+					i++;
 					break;
 				default:
-					_putchar(format[i + 1]);
+					_putchar(format[i]);
 					len++;
 					break;
 			}
-			if (format[i + 1] == '%')
-				op = 'o';
 		}
-		else if (format[i] != op)
+		else
 		{
 			_putchar(format[i]);
 			len++;
 		}
 		i++;
 	}
+	va_end(args);
 	return (len);
 }
