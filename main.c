@@ -10,6 +10,9 @@
 int main(void)
 {
 
-    _printf("s1: %s s2: %s s3: %s%s\n", "str ", "ing ", "aall", "ttoo");
+    _printf("%");
+    printf("%");
+    _printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
+    printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
     return (0);
 }

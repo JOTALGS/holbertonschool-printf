@@ -26,7 +26,7 @@ prt_int(int n)
 		i++;
 		n = n / 10;
 	}
-	for(j = i - 1; j > -1; j--)
+	for (j = i - 1; j > -1; j--)
 	{
 		dg = arr[j] + '0';
 		_putchar(dg);
@@ -47,7 +47,6 @@ _printf(const char *format, ...)
 
 	if (!format)
 	{
-		_putchar('\n');
 		return (0);
 	}
 	va_start(args, format);
@@ -64,10 +63,22 @@ _printf(const char *format, ...)
 					break;
 				case 's':
 					str = va_arg(args, char *);
-					for (y = 0; str[y] != '\0'; y++)
+					if (str)
 					{
-						_putchar(str[y]);
-						len++;
+						for (y = 0; str[y] != '\0'; y++)
+						{
+							_putchar(str[y]);
+							len++;
+						}
+					}
+					else
+					{
+						_putchar('(');
+						_putchar('n');
+						_putchar('u');
+						_putchar('l');
+						_putchar('l');
+						_putchar(')');
 					}
 					i++;
 					break;
@@ -85,6 +96,8 @@ _printf(const char *format, ...)
 					_putchar(format[i + 1]);
 					len++;
 					i++;
+					break;
+				case '\0':
 					break;
 				default:
 					_putchar(format[i]);
