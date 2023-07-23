@@ -47,7 +47,7 @@ _printf(const char *format, ...)
 
 	if (!format)
 	{
-		return (0);
+		return (-1);
 	}
 	va_start(args, format);
 	while (format[i])
@@ -79,6 +79,7 @@ _printf(const char *format, ...)
 						_putchar('l');
 						_putchar('l');
 						_putchar(')');
+						len =+ 6;
 					}
 					i++;
 					break;
@@ -98,6 +99,7 @@ _printf(const char *format, ...)
 					i++;
 					break;
 				case '\0':
+					return (-1);
 					break;
 				default:
 					_putchar(format[i]);

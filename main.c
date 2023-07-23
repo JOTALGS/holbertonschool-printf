@@ -9,10 +9,11 @@
  */
 int main(void)
 {
+    int len;
+    int len2;
 
-    _printf("%");
-    printf("%");
-    _printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
-    printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
+    len = _printf(NULL);
+    len2 = printf(NULL);
+    printf("1:%d 2:%d\n", len, len2);
     return (0);
 }
