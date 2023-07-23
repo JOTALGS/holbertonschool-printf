@@ -56,56 +56,56 @@ _printf(const char *format, ...)
 		{
 			switch (format[i + 1])
 			{
-				case 'c':
-					_putchar(va_arg(args, int));
-					len++;
-					i++;
-					break;
-				case 's':
-					str = va_arg(args, char *);
-					if (str)
+			case 'c':
+				_putchar(va_arg(args, int));
+				len++;
+				i++;
+				break;
+			case 's':
+				str = va_arg(args, char *);
+				if (str)
+				{
+					for (y = 0; str[y] != '\0'; y++)
 					{
-						for (y = 0; str[y] != '\0'; y++)
-						{
-							_putchar(str[y]);
-							len++;
-						}
+						_putchar(str[y]);
+						len++;
 					}
-					else
-					{
-						_putchar('(');
-						_putchar('n');
-						_putchar('u');
-						_putchar('l');
-						_putchar('l');
-						_putchar(')');
-						len =+ 6;
-					}
-					i++;
-					break;
-				case 'd':
-					dgt = va_arg(args, int);
-					len += prt_int(dgt);
-					i++;
-					break;
-				case 'i':
-					dgt = va_arg(args, int);
-					len += prt_int(dgt);
-					i++;
-					break;
-				case '%':
-					_putchar(format[i + 1]);
-					len++;
-					i++;
-					break;
-				case '\0':
-					return (-1);
-					break;
-				default:
-					_putchar(format[i]);
-					len++;
-					break;
-			}
+				}
+				else
+				{
+					_putchar('(');
+					_putchar('n');
+					_putchar('u');
+					_putchar('l');
+					_putchar('l');
+					_putchar(')');
+					len += 6;
+				}
+				i++;
+				break;
+			case 'd':
+				dgt = va_arg(args, int);
+				len += prt_int(dgt);
+				i++;
+				break;
+			case 'i':
+				dgt = va_arg(args, int);
+				len += prt_int(dgt);
+				i++;
+				break;
+			case '%':
+				_putchar(format[i + 1]);
+				len++;
+				i++;
+				break;
+			case '\0':
+				return (-1);
+				break;
+			default:
+				_putchar(format[i]);
+				len++;
+				break;
+		}
 		}
 		else
 		{
